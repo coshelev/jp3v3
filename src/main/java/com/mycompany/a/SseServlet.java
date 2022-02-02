@@ -1,22 +1,34 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletException;
-import java.io.IOException;
 
-public class SseServlet extends HttpServlet
-{
-    private String greeting="Hello World from servlet";
-    public SseServlet(){}
-    public SseServlet(String greeting)
-    {
-        this.greeting=greeting;
-    }
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("<h1>"+greeting+"</h1>");
-        response.getWriter().println("session=" + request.getSession(true).getId());
+public class TestServlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+
+        //content type must be set to text/event-stream
+        response.setContentType("text/event-stream");
+
+        //encoding must be set to UTF-8
+        response.setCharacterEncoding("UTF-8");
+
+        PrintWriter writer = response.getWriter();
+
+        for (int i = 0; i < 10; i++) {
+
+            writer.write("data: " + System.currentTimeMillis() + "\n\n");
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        writer.close();
     }
 }

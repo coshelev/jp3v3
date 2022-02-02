@@ -18,9 +18,10 @@ public class JettyServer {
         	context.addServlet(new ServletHolder(new HelloServlet()),"/*");
         	context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
         	context.addServlet(new ServletHolder(new HelloServlet("Bonjour le Monde")),"/fr/*");
-		   context.addServlet(new ServletHolder(new Servlet2("From Servlet 2")),"/en/*");
-         context.addServlet(new ServletHolder(new SleepServlet("sleep")),"/sleep/*");
-         context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
+		   	context.addServlet(new ServletHolder(new Servlet2("From Servlet 2")),"/en/*");
+         	context.addServlet(new ServletHolder(new SleepServlet("sleep")),"/sleep/*");
+         	context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
+			context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
 
         	try {
         	server.start();
