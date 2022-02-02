@@ -65,7 +65,7 @@
   <dependency>
     		<groupId>org.eclipse.jetty</groupId>
     		<artifactId>jetty-eventsource-servlet</artifactId>
-    		<version>9.4.3.v20170317</version>
+    		<version>1.0.0</version>
 	</dependency>
 	<dependency>
   		<groupId>com.google.code.gson</groupId>
