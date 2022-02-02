@@ -7,19 +7,25 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
 
     public void onOpen(Emitter emitter) throws IOException
     {
-        this.emitter = emitter;
-        emitter.data("new server event " + new Date().toString());
+        try{
+            this.emitter = emitter;
+            emitter.data("new server event " + new Date().toString());
+        }   
+        catch (InterruptedException e) {
+                e.printStackTrace();
+        }   
  
     }
 
-    public void emitEvent(String dataToSend)
+    public void emitEvent(String dataToSend) throws IOException
     {
         //this.emitter.data(dataToSend);
         try {
               this.emitter.data(dataToSend);  
-        }   catch (InterruptedException e) {
+        }   
+        catch (InterruptedException e) {
                 e.printStackTrace();
-            }   
+        }   
     }
 
     public void onClose()
