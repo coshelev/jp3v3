@@ -14,7 +14,12 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
 
     public void emitEvent(String dataToSend)
     {
-        this.emitter.data(dataToSend);
+        //this.emitter.data(dataToSend);
+        try {
+              this.emitter.data(dataToSend);  
+        }   catch (InterruptedException e) {
+                e.printStackTrace();
+            }   
     }
 
     public void onClose()
