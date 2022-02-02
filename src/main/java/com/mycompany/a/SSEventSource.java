@@ -10,7 +10,7 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
             this.emitter = emitter;
             emitter.data("new server event " + new Date().toString());
         }   
-        catch (InterruptedException e) {
+        catch (IOException e) {
                 e.printStackTrace();
         }   
  
@@ -21,7 +21,7 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
         try {
               this.emitter.data(dataToSend);  
         }   
-        catch (InterruptedException e) {
+        catch (IOException e) {
                 e.printStackTrace();
         }   
     }
