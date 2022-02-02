@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SseServlet extends HttpServlet {
 
+    private String greeting="Hello World from SseServlet";
+    public SseServlet(){}
+    public SseServlet(String greeting){
+        this.greeting=greeting;
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
