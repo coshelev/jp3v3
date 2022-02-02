@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.Date;
+ 
 public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
 {
     private Emitter emitter;
