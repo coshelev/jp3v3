@@ -38,43 +38,33 @@ public class MailServlet extends HttpServlet {
    } 
    
    private void readAutobrokerMail(){
-         final String user = "luidorexpertALL";       // имя пользователя
-         final String pass = "kiduttocmomzgdqk";      // пароль
-         final String host = "imap.yandex.ru";        // адрес почтового сервера
+         final String user = "luidorexpertALL";       
+         final String pass = "kiduttocmomzgdqk";
+         final String host = "imap.yandex.ru";
 
          try {
-            // Создание свойств
+           
             Properties props = new Properties();
 
-            //включение debug-режима
-             props.put("mail.debug", "false");
+            props.put("mail.debug", "false");
 
-            //Указываем протокол - IMAP с SSL
             props.put("mail.store.protocol", "imaps");
             Session session = Session.getInstance(props);
             Store store = session.getStore();
 
-            //подключаемся к почтовому серверу
             store.connect(host, user, pass);
 
-            //получаем папку с входящими сообщениями
             Folder inbox = store.getFolder("INBOX");
 
-            //открываем её только для чтения
             inbox.open(Folder.READ_ONLY);
             
-            final FromTerm fromTerm             = new FromTerm(new InternetAddress("no-reply@a-b63.ru"));
-            //final SubjectTerm subjectTerm     = new SubjectTerm("Заявка:");
-            //AndTerm termsSummary              = new AndTerm(fromTerm, subjectTerm);
-           
+            final FromTerm fromTerm  = new FromTerm(new InternetAddress("no-reply@a-b63.ru"));
+                      
             var a = java.time.LocalDate.now().minusDays(1);
             Date  receivedDate = java.sql.Date.valueOf(a);
             System.out.println("receivedDate = " + receivedDate);
             final ReceivedDateTerm received  = new ReceivedDateTerm(ComparisonTerm.GT, receivedDate);
-            //termsSummary                   = new AndTerm(received, termsSummary);
-            //AndTerm termsSummary           = new AndTerm(received, subjectTerm);
-  
-            //final Message[] foundMessages    = inbox.search(termsSummary);            
+               
             final var foundMessages       = inbox.search(received);  
             System.out.println(" ***** foundMessages = "+foundMessages.length); 
 
@@ -112,9 +102,6 @@ public class MailServlet extends HttpServlet {
                   .header("accept", "application/json") 
                   .build();
               
-               //HttpResponse<String> response = client.sendAsync(request,HttpResponse.BodyHandlers.ofString());
-               //var response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-               //System.out.println(response.body());  
                client.sendAsync(request,HttpResponse.BodyHandlers.ofString());
                };
             }
