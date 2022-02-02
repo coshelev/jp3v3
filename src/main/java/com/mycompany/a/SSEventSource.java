@@ -5,8 +5,7 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
 {
     private Emitter emitter;
 
-    public void onOpen(Emitter emitter) throws IOException
-    {
+    public void onOpen(Emitter emitter) throws IOException {
         try{
             this.emitter = emitter;
             emitter.data("new server event " + new Date().toString());
@@ -17,8 +16,7 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
  
     }
 
-    public void emitEvent(String dataToSend) throws IOException
-    {
+    public void emitEvent(String dataToSend) throws IOException{
         //this.emitter.data(dataToSend);
         try {
               this.emitter.data(dataToSend);  
