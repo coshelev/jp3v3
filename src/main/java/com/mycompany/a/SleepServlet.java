@@ -23,9 +23,9 @@ public class SleepServlet extends HttpServlet
     {
         this.greeting    = greeting;
         this.SSEvntSrcServlet = SSEvntSrcServlet;
-       // this.SSEvntSrcServlet.getEventSource().emitEvent("Emit event from sleep start");
+        this.SSEvntSrcServlet.getEventSource().emitEvent("Emit event from sleep start");
        // this.SSEvntSrcServlet.EvSourse.emitEvent("Emit event from sleep start");
-        this.SSEvntSrcServlet.EvSourse.Hello();
+        //this.SSEvntSrcServlet.EvSourse.Hello();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
