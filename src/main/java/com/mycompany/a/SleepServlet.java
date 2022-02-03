@@ -7,14 +7,25 @@ import java.io.BufferedReader;
 import com.google.gson.*;
 import java.util.*;
 
+import org.eclipse.jetty.servlets.EventSourceServlet;
+
 public class SleepServlet extends HttpServlet
 {
     private String greeting="Hello World from SleepServlet";
+    private EventSourceServlet evntSrcSrlt;
+
     public SleepServlet(){}
     public SleepServlet(String greeting)
     {
         this.greeting=greeting;
     }
+    public SleepServlet(String greeting, EventSourceServlet evntSrcSrlt)
+    {
+        this.greeting    = greeting;
+        this.evntSrcSrlt = evntSrcSrlt;
+
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
