@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import com.google.gson.*;
 import java.util.*;
+import org.eclipse.jetty.servlets.EventSource;
 
 public class SleepServlet extends HttpServlet
 {
