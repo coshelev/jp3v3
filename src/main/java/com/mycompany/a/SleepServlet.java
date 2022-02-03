@@ -21,6 +21,7 @@ public class SleepServlet extends HttpServlet
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("<h1>"+greeting+"</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
+        A.eventSource.emitEvent("Hello from sse");
     }
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, java.io.IOException {
 	   StringBuffer jb = new StringBuffer();
