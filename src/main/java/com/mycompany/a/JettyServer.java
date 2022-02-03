@@ -22,6 +22,7 @@ public class JettyServer {
          	context.addServlet(new ServletHolder(new SleepServlet("sleep")),"/sleep/*");
          	context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
 			context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
+			context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*");
 
         	try {
         	server.start();
