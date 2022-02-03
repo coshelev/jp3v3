@@ -3,34 +3,40 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import org.eclipse.jetty.servlets.EventSourceServlet;
+
 public class JettyServer {
 
 	private Server server;
 
 	public void start() throws Exception {
 		System.out.print("Starting jetty...");
+
 		Server server = new Server(8680);
 
 		ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        	context.setContextPath("/");
-        	server.setHandler(context);
+        context.setContextPath("/");
+        server.setHandler(context);
  
-        	context.addServlet(new ServletHolder(new HelloServlet()),"/*");
-        	context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
-        	context.addServlet(new ServletHolder(new HelloServlet("Bonjour le Monde")),"/fr/*");
-		   	context.addServlet(new ServletHolder(new Servlet2("From Servlet 2")),"/en/*");
-         	context.addServlet(new ServletHolder(new SleepServlet("sleep")),"/sleep/*");
-         	context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
-			context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
-			context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*");
+        context.addServlet(new ServletHolder(new HelloServlet()),"/*");
+        context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
+        context.addServlet(new ServletHolder(new HelloServlet("Bonjour le Monde")),"/fr/*");
+		context.addServlet(new ServletHolder(new Servlet2("From Servlet 2")),"/en/*");
+        context.addServlet(new ServletHolder(new SleepServlet("sleep")),"/sleep/*");
+        context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
+		context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
 
-        	try {
+		//context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*");
+		EventSourceServlet SSEventSrlt = new SSEventSourceServlet());
+		context.addServlet(new ServletHolder(SSEventSrlt,"/ssevent/*");
+
+        try {
         	server.start();
         	server.dumpStdErr();
-             	server.join();
+            server.join();
         	} catch (Exception e) {           
             	e.printStackTrace();
-        	};
+        };
    	}
 }
 
