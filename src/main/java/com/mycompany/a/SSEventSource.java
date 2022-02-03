@@ -29,4 +29,8 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
     public void onClose()
     {
     }
+
+    public void Hello (){
+       System.out.println("hello")   
+    }
 }
