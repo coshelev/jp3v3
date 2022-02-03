@@ -26,7 +26,7 @@ public class JettyServer {
 		context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
 
 		//context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*"); //=>
-		EventSourceServlet SSEventSrlt = new SSEventSourceServlet();
+		SSEventSourceServlet SSEventSrlt = new SSEventSourceServlet();
 		context.addServlet(new ServletHolder(SSEventSrlt),"/ssevent/*");
 
 		context.addServlet(new ServletHolder(new SleepServlet("sleep", SSEventSrlt)),"/sleep/*");

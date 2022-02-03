@@ -22,7 +22,7 @@ public class SleepServlet extends HttpServlet
     public SleepServlet(String greeting, SSEventSourceServlet SSEvntSrcServlet)
     {
         this.greeting    = greeting;
-        this.evntSrcSrlt = evntSrcSrlt;
+        this.SSEvntSrcServlet = SSEvntSrcServlet;
         this.SSEvntSrcServlet.getEventSource().emitEvent("Emit event from sleep start");
     }
 
