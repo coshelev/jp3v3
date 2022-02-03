@@ -7,6 +7,8 @@ public class SSEventSourceServlet extends org.eclipse.jetty.servlets.EventSource
     @Override
     protected EventSource newEventSource(HttpServletRequest request)
     {
-        return new SSEventSource();
+        EventSource eS = new SSEventSource(); 
+        A.eventSource = eS;
+        //return new SSEventSource();
     }
 }
