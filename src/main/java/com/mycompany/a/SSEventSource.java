@@ -31,6 +31,6 @@ public class SSEventSource implements org.eclipse.jetty.servlets.EventSource
     }
 
     public void Hello (){
-       System.out.println("hello")   
+       System.out.println("hello");   
     }
 }
