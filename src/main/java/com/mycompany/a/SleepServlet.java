@@ -8,6 +8,8 @@ import com.google.gson.*;
 import java.util.*;
 
 //import org.eclipse.jetty.servlets.EventSourceServlet;
+import java.io.IOException;
+
 
 public class SleepServlet extends HttpServlet
 {
@@ -23,8 +25,12 @@ public class SleepServlet extends HttpServlet
     {
         this.greeting    = greeting;
         this.SSEvntSrcServlet = SSEvntSrcServlet;
-        //this.SSEvntSrcServlet.getEventSource().emitEvent("Emit event from sleep start");
-        this.SSEvntSrcServlet.EvSourse.emitEvent("Emit event from sleep start");
+        try{
+            this.SSEvntSrcServlet.getEventSource().emitEvent("Emit event from sleep start");
+            } catch(IOException e) {
+                e.printStackTrace();
+            };
+        //this.SSEvntSrcServlet.EvSourse.emitEvent("Emit event from sleep start");
         //this.SSEvntSrcServlet.EvSourse.Hello();
     }
 
