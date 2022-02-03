@@ -13,5 +13,5 @@ public class SSEventSourceServlet extends org.eclipse.jetty.servlets.EventSource
         //return new SSEventSource();
     }
 
-    private EventSource EvSourse;
+    public EventSource EvSourse;
 }
