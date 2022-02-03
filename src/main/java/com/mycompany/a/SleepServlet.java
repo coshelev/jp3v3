@@ -12,18 +12,18 @@ import java.util.*;
 public class SleepServlet extends HttpServlet
 {
     private String greeting="Hello World from SleepServlet";
-    private EventSourceServlet evntSrcSrlt;
+    private SSEventSourceServlet SSEvntSrcServlet;
 
     public SleepServlet(){}
     public SleepServlet(String greeting)
     {
         this.greeting=greeting;
     }
-    public SleepServlet(String greeting, SSEventSourceServlet evntSrcSrlt)
+    public SleepServlet(String greeting, SSEventSourceServlet SSEvntSrcServlet)
     {
         this.greeting    = greeting;
         this.evntSrcSrlt = evntSrcSrlt;
-        this.evntSrcSrlt.getEventSource().emitEvent("Emit event from sleep start");
+        this.SSEvntSrcServlet.getEventSource().emitEvent("Emit event from sleep start");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
