@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import com.google.gson.*;
 import java.util.*;
 
-import org.eclipse.jetty.servlets.EventSourceServlet;
+//import org.eclipse.jetty.servlets.EventSourceServlet;
 
 public class SleepServlet extends HttpServlet
 {
@@ -19,7 +19,7 @@ public class SleepServlet extends HttpServlet
     {
         this.greeting=greeting;
     }
-    public SleepServlet(String greeting, EventSourceServlet evntSrcSrlt)
+    public SleepServlet(String greeting, SSEventSourceServlet evntSrcSrlt)
     {
         this.greeting    = greeting;
         this.evntSrcSrlt = evntSrcSrlt;
