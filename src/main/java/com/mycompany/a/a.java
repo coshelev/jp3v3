@@ -1,5 +1,3 @@
-import org.eclipse.jetty.servlets.EventSource;
-
 class A{
 
 	public static void main(String[] args){
