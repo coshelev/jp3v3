@@ -1,5 +1,8 @@
+import org.eclipse.jetty.servlets.EventSource;
 
 class A{
+
+	public static EventSource eventSource;
 
 	public static void main(String[] args){
 		System.out.print("class A constructor \n");
