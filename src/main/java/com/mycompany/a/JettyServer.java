@@ -21,8 +21,7 @@ public class JettyServer {
         context.addServlet(new ServletHolder(new HelloServlet("Bonjour le Monde")),"/fr/*");
 		context.addServlet(new ServletHolder(new Servlet2("From Servlet 2")),"/en/*");
         context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
-		//context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
-		context.addServlet(new ServletHolder(new MySSEServlet()),"/sse/*");
+		context.addServlet(new ServletHolder(new SseServlet("sse")),"/sse/*");
 
 		//context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*"); //=>
 		SSEventSourceServlet SSEventSrlt = new SSEventSourceServlet();
