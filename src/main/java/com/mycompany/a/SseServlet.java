@@ -17,10 +17,19 @@ public class SseServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
+        MySSEServlet ms = new MySSEServlet();
+        ms.newEventSource(request);
+    }
+
+    public void doGet_original(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+
         //content type must be set to text/event-stream
+        //---------------------------------------------
         response.setContentType("text/event-stream");
 
         //encoding must be set to UTF-8
+        //------------------------------
         response.setCharacterEncoding("UTF-8");
 
         PrintWriter writer = response.getWriter();
