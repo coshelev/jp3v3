@@ -40,8 +40,8 @@ public class MySSEServlet extends EventSourceServlet {
             }
         };
 
-        response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
+        //response.setContentType("text/html");
+        //response.setStatus(HttpServletResponse.SC_OK);
 
         response.getWriter().println("<h1>talk</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
