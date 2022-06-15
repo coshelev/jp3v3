@@ -40,20 +40,20 @@ public class MySSEServlet extends EventSourceServlet {
             }
         };
 
-        //response.setContentType("text/html");
-        //response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("text/html");
+        response.setStatus(HttpServletResponse.SC_OK);
 
         response.getWriter().println("<h1>talk</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
-        response.getWriter().println("<script>var eventSource = new EventSource(\"/talk\"); eventSource.onmessage = function(event){console.log(event.data)};</script>");
+        response.getWriter().println("<div id="content"></div><script> var source = new EventSource('/talk');source.addEventListener('open', function(e) {document.getElementById('content').innerHTML += 'Connections to the server established..<br/>';}, false););
 
         //content type must be set to text/event-stream
         //---------------------------------------------
-        response.setContentType("text/event-stream");
+        //response.setContentType("text/event-stream");
 
         //encoding must be set to UTF-8
         //------------------------------
-        response.setCharacterEncoding("UTF-8");
+        //response.setCharacterEncoding("UTF-8");
         
     }
 
