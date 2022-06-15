@@ -22,6 +22,31 @@ public class MySSEServlet extends EventSourceServlet {
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("<h1>talk</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
+
+        new EventSource() {
+ 
+            
+
+            @Override
+            public void onOpen(final Emitter emitter) throws IOException {
+                emitter.data("new server event " + new Date().toString());
+                while (true) {
+                    System.out.println("propagating event..");
+                    try {
+                        Thread.sleep(5000);
+                        emitter.data("new server event " + new Date().toString());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }   
+                }
+            }
+ 
+            @Override
+            public void onClose() {
+                System.out.println("closed");
+            }
+        };
+        
     }
 
     @Override
