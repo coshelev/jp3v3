@@ -45,7 +45,7 @@ public class MySSEServlet extends EventSourceServlet {
 
         response.getWriter().println("<h1>talk</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
-        response.getWriter().println("<div id="content"></div><script> var source = new EventSource('/talk');source.addEventListener('open', function(e) {document.getElementById('content').innerHTML += 'Connections to the server established..<br/>';}, false););
+        response.getWriter().println("<div id="content"></div><script> var source = new EventSource('/talk');source.addEventListener('open', function(e) {document.getElementById('content').innerHTML += 'Connections to the server established..<br/>';}, false););");
 
         //content type must be set to text/event-stream
         //---------------------------------------------
