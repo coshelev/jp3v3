@@ -12,10 +12,20 @@ import org.eclipse.jetty.servlets.EventSourceServlet;
 public class MySSEServlet extends EventSourceServlet {
     private static final long serialVersionUID = 1L;
  
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        response.setContentType("text/html");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().println("<h1>talk</h1>");
+        response.getWriter().println("session=" + request.getSession(true).getId());
+    }
+
     @Override
     protected EventSource newEventSource(final HttpServletRequest req) {
         return new EventSource() {
  
+            
+
             @Override
             public void onOpen(final Emitter emitter) throws IOException {
                 emitter.data("new server event " + new Date().toString());
