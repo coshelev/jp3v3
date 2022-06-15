@@ -18,25 +18,8 @@ public class MySSEServlet extends EventSourceServlet {
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
-
-        //content type must be set to text/event-stream
-        //---------------------------------------------
-        //response.setContentType("text/event-stream");
-
-        //encoding must be set to UTF-8
-        //------------------------------
-        //response.setCharacterEncoding("UTF-8");
-
-        response.getWriter().println("<h1>talk</h1>");
-        response.getWriter().println("session=" + request.getSession(true).getId());
-        response.getWriter().println("<script>var eventSource = new EventSource(\"/talk\"); eventSource.onmessage = function(event){console.log(event.data)};</script>");
-
+    
         EventSource ev = new EventSource() {
- 
-            
-
             @Override
             public void onOpen(final Emitter emitter) throws IOException {
                 emitter.data("new server event " + new Date().toString());
@@ -56,6 +39,21 @@ public class MySSEServlet extends EventSourceServlet {
                 System.out.println("closed");
             }
         };
+
+        response.setContentType("text/html");
+        response.setStatus(HttpServletResponse.SC_OK);
+
+        response.getWriter().println("<h1>talk</h1>");
+        response.getWriter().println("session=" + request.getSession(true).getId());
+        response.getWriter().println("<script>var eventSource = new EventSource(\"/talk\"); eventSource.onmessage = function(event){console.log(event.data)};</script>");
+
+        //content type must be set to text/event-stream
+        //---------------------------------------------
+        response.setContentType("text/event-stream");
+
+        //encoding must be set to UTF-8
+        //------------------------------
+       /response.setCharacterEncoding("UTF-8");
         
     }
 
