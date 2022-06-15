@@ -23,7 +23,7 @@ public class MySSEServlet extends EventSourceServlet {
         response.getWriter().println("<h1>talk</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
 
-        new EventSource ev = EventSource() {
+        EventSource ev = new EventSource() {
  
             
 
