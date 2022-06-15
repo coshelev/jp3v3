@@ -32,6 +32,8 @@ public class MySSEServlet extends EventSourceServlet {
         response.getWriter().println("<h1>talk</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
 
+        response.getWriter().println("<script>var eventSource = new EventSource(\"/talk\"); eventSource.onmessage = function(event){console.log(event.data)};</script>");
+
         EventSource ev = new EventSource() {
  
             
