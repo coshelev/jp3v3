@@ -53,7 +53,7 @@ public class MySSEServlet extends EventSourceServlet {
 
         //encoding must be set to UTF-8
         //------------------------------
-       /response.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         
     }
 
