@@ -48,7 +48,7 @@ public class MySSEServlet extends EventSourceServlet {
         
         response.getWriter().println("<div id=\"content\"></div>");
         response.getWriter().println("<script>");
-        response.getWriter().println("var source = new EventSource(\'/talk\');");
+        response.getWriter().println("var source = new EventSource(\'/talk2\');");
         response.getWriter().println("source.addEventListener(\'open\', function(e) {");
         response.getWriter().println("document.getElementById(\'content\').innerHTML += \'Connections to the server established..<br/>\';}, false);");
         response.getWriter().println("source.onmessage = function(e) {document.getElementById(\'content\').innerHTML += e.data + \'<br/>\'; };");    
