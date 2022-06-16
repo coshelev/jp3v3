@@ -48,7 +48,7 @@ public class MySSEServlet2 extends EventSourceServlet {
         //------------------------------
         response.setCharacterEncoding("UTF-8");
 
-        response.getWriter().println("<h1>talk</h1>");
+        response.getWriter().println("<h1>talk2</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
         
         //response.getWriter().println("<div id=\"content\"></div>");
