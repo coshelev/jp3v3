@@ -20,6 +20,8 @@ public class Servlet2 extends HttpServlet
         response.getWriter().println("<div id=\"content\"></div>");
         response.getWriter().println("<script>");
         response.getWriter().println("var es = new EventSource(\"/ssevent\");");
+        response.getWriter().println("es.addEventListener(\'open\', function(e) {");
+        response.getWriter().println("document.getElementById(\'content\').innerHTML += \'Connections to the server established..<br/>\';}, false);");
         response.getWriter().println("es.onmessage = function(event){document.getElementById(\'content\').innerHTML += event.data + \'<br/>\';console.log(event.data)};");
         response.getWriter().println("</script>");
         response.getWriter().println("session=" + request.getSession(true).getId());
