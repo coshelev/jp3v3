@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
  
 //@WebServlet(urlPatterns = "/talk", initParams = { @WebInitParam(name = "heartBeatPeriod", value = "5") }, asyncSupported = true)
-public class MySSEServlet extends EventSourceServlet {
+public class MySSEServlet2 extends EventSourceServlet {
     private static final long serialVersionUID = 1L;
  
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
