@@ -31,7 +31,8 @@ public class JettyServer {
 
 	//this servlet create sse-stream for /en/ web-page
 	context.addServlet(new ServletHolder(SSEventSrlt),"/ssevent/*");
-
+	
+	//emit event for /en/ web-page
 	context.addServlet(new ServletHolder(new SleepServlet("sleep", SSEventSrlt)),"/sleep/*");
 
         try {
