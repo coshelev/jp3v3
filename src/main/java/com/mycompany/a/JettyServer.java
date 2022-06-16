@@ -19,21 +19,20 @@ public class JettyServer {
         context.addServlet(new ServletHolder(new HelloServlet()),"/*");
         context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
         context.addServlet(new ServletHolder(new HelloServlet("Bonjour le Monde")),"/fr/*");
+	
+	//Read autobroker mail
+	context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");	
 
-		// this servlet create web-page with script to create sse-connection to http-server to url "/ssevent/"
-		context.addServlet(new ServletHolder(new Servlet2("From Servlet 2, creating sse-connetion to /ssevent/ url  ")),"/en/*");
+	// this servlet create web-page with script to create sse-connection to http-server to url "/ssevent/"
+	context.addServlet(new ServletHolder(new Servlet2("From Servlet 2, creating sse-connetion to /ssevent/ url  ")),"/en/*");
 
-		//context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*"); //=>
-		SSEventSourceServlet SSEventSrlt = new SSEventSourceServlet();
+	//context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*"); //=>
+	SSEventSourceServlet SSEventSrlt = new SSEventSourceServlet();
 
-		//this servlet create sse-stream for /en/ web-page
-		context.addServlet(new ServletHolder(SSEventSrlt),"/ssevent/*");
+	//this servlet create sse-stream for /en/ web-page
+	context.addServlet(new ServletHolder(SSEventSrlt),"/ssevent/*");
 
-        context.addServlet(new ServletHolder(new MailServlet("mail")),"/mail/*");
-
-		context.addServlet(new ServletHolder(new SleepServlet("sleep", SSEventSrlt)),"/sleep/*");
-
-		context.addServlet(new ServletHolder(new MySSEServlet()), "/talk/*");
+	context.addServlet(new ServletHolder(new SleepServlet("sleep", SSEventSrlt)),"/sleep/*");
 
         try {
         	server.start();
