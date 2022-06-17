@@ -26,7 +26,7 @@ public class JettyServer {
 	// this servlet create web-page with script to create sse-connection to http-server to url "/ssevent/"
 	context.addServlet(new ServletHolder(new Servlet2("From Servlet 2, creating sse-connetion to /ssevent/ url  ")),"/en/*");
 
-	//context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*"); //=>
+	////context.addServlet(new ServletHolder(new SSEventSourceServlet()),"/ssevent/*"); //=>
 	SSEventSourceServlet SSEventSrlt = new SSEventSourceServlet();
 
 	//this servlet create sse-stream for /en/ web-page
